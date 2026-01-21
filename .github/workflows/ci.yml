@@ -3,7 +3,7 @@ on:
     push:
         branches: ["main"]
 permissions:
-    token-id: write
+    id-token: write
     contents: read
 jobs:
     terraform:
