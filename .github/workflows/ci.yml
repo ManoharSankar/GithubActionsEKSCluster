@@ -34,7 +34,7 @@ jobs:
           run: terraform apply -auto-approve
           working-directory: terraform
         
-        - name: wait 
+        - name: Wait 10 minutes
           run: sleep 600
         
         - name: Terraform Destroy
