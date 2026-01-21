@@ -2,7 +2,7 @@ provider "aws"{
     region = var.region
 }
 module "eks" {
-  source = "./eks"
+  source = "GITHUBACTIONSEKS/eks"
 
   cluster_name    = var.cluster_name
   private_subnets = var.private_subnets
