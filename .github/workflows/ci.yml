@@ -1,0 +1,41 @@
+name: Deploy EKS Dev
+on:
+    push:
+        branches: ["main"]
+permission:
+    token-id: write
+    contents: read
+jobs:
+    terraform:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+        
+        - name: Configure AWS Cederntials
+          uses: aws-actions/configure-aws-credentials@v4
+          with:
+            role-to-assume:${{secrets.AWS_ROLE_ARN}}
+            aws-region: ap-south-2
+        
+        - name: SetUp Terraform
+          run: hashicorp/setup-terraform@v3
+
+        - name: Terraform Initialization
+          run: terraform init
+          working-directory: terraform
+        
+        - name: Terraform plan
+          run: terraform plan
+          working-directory: terraform
+        
+        - name: Terraform apply
+          run: terraform apply -auto-approve
+          working-directory: terraform
+        
+        - name: wait 
+          run: sleep 600
+        
+        - name: Terraform Destroy
+          run: terraform destroy -auto-approve
