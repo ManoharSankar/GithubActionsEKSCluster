@@ -20,7 +20,7 @@ jobs:
             aws-region: ap-south-2
         
         - name: SetUp Terraform
-          run: hashicorp/setup-terraform@v3
+          uses: hashicorp/setup-terraform@v3
 
         - name: Terraform Initialization
           run: terraform init
