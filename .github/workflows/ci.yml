@@ -16,8 +16,8 @@ jobs:
         - name: Configure AWS Cederntials
           uses: aws-actions/configure-aws-credentials@v4
           with:
-            role-to-assume:${{secrets.AWS_ROLE_ARN}}
-          aws-region: ap-south-2
+            role-to-assume: ${{secrets.AWS_ROLE_ARN}}
+            aws-region: ap-south-2
         
         - name: SetUp Terraform
           run: hashicorp/setup-terraform@v3
