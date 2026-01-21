@@ -2,7 +2,7 @@ name: Deploy EKS Dev
 on:
     push:
         branches: ["main"]
-permission:
+permissions:
     token-id: write
     contents: read
 jobs:
