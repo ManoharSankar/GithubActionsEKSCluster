@@ -1,0 +1,16 @@
+# GitHub Actions admin access
+resource "aws_eks_access_entry" "github" {
+  cluster_name  = aws_eks_cluster.this.name
+  principal_arn = aws_iam_role.github_actions.arn
+  type          = "STANDARD"
+}
+
+resource "aws_eks_access_policy_association" "github_admin" {
+  cluster_name  = aws_eks_cluster.this.name
+  principal_arn = aws_iam_role.github_actions.arn
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+
+  access_scope {
+    type = "cluster"
+  }
+}
