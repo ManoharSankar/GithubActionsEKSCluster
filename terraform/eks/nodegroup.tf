@@ -4,7 +4,7 @@ resource "aws_eks_node_group" "dev" {
   node_role_arn   = aws_iam_role.node_role.arn
   subnet_ids      = var.private_subnets
 
-  instance_types = ["t3.medium"]
+  instance_types = ["t3.small"]
   capacity_type  = "ON_DEMAND"
 
   scaling_config {
